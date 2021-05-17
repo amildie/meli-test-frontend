@@ -27,7 +27,7 @@ async function getSearchResults(searchQuery) {
 
 El cliente está diseñado con un enfoque top-down minimalista usando componentes funcionales con responsabilidades aisladas:
 
-* `<Main>` es el parent de todos los otros componentes y engloba la totalidad de la app. Este componente tiene la responsabilidad de inferir el estado de la app dependiendo de los parámetros y la ruta en la URL. Por ejemplo, si la ruta es de la forma `/api/items?q=:query` entonces `<Main>` va a setear el estado interno de la app como `searchView`, y en base a ese estado va a determinar qué componentes mostrar.
+* `<Main>` es el parent de todos los otros componentes y actúa como controlador de las tres vistas. Este componente tiene la responsabilidad de inferir el estado de la app dependiendo de los parámetros y la ruta en la URL. Por ejemplo, si la ruta es de la forma `/api/items?q=:query` entonces `<Main>` va a setear el estado interno de la app como `searchView`, y en base a ese estado va a determinar qué componentes mostrar.
 * `<SearchBar>` es la barra superior de búsqueda, se muestra en todas las vistas.
 * `<Breadcrumb>` también se muestra en todas las vistas, pero solo tiene contenido cuando el usuario está realizando un search o viendo un ítem.
 * `<SearchView>` se muestra cuando el estado de la app es `searchView`. Este componente recibe en sus `props` la query para buscar y se encarga de hacer un `fetch` al endpoint `/api/items?q=:query` del servidor. Al terminar el `fetch`, el componente crea un `<Result>` por cada ítem devuelto.
