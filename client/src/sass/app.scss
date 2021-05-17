@@ -1,0 +1,319 @@
+$topBarBackground: #FFE600;
+$clearBackground: #EEEEEE;
+$buttonColor: #3483FA;
+$topBarSearchInputColor: #333333;
+$widePadding: 32px;
+$narrowPadding: 16px;
+$fontSmall: 18px;
+$fontMedium: 24px;
+
+// Main App Wrapper Layout
+
+.MainAppWrpr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+  background-color: $clearBackground;
+}
+
+.MainScreenWrpr {
+  background-color: $clearBackground;
+  height: 100%;
+  width: 100%;
+}
+
+.CenterAreaWrpr {
+  top: 0;
+  height: auto;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 5%;
+  background-color: $clearBackground;
+}
+
+.MainDataAreaWrpr {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 96%;
+  width: 100%;
+}
+
+// Search View Component
+
+.SearchView {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+.searchViewSeparator {
+  width: 95%;
+  max-width: 95%;
+  border-top: 1px solid rgb(226, 226, 226);
+}
+
+// Result Component
+
+.Result {
+  width: 100%;
+  height: 212px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.resultWrpr {
+  display: grid;
+  grid-template-columns: 212px 40% 1fr;
+  grid-template-rows: 212px;
+  gap: 0px 0px;
+  grid-template-areas:
+    "resultThumbnail resultInfo resultLocation";
+}
+
+.resultInfo { 
+  grid-area: resultInfo;
+  overflow: hidden;
+}
+
+.resultThumbnail { 
+  grid-area: resultThumbnail;
+  padding: $narrowPadding;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    height: 180px;
+    width: 180px;
+    border-radius: 4px;
+  }
+}
+
+.resultLocation { 
+  grid-area: resultLocation;
+  padding-right: $widePadding;
+  padding-top: $widePadding;
+  text-align: right;
+}
+
+.resultInfoTitle {
+  margin-top: $widePadding;
+  font: $fontSmall Arial;
+}
+
+.resultInfoPrice {
+  margin-top: $widePadding;
+  font: $fontMedium Arial;
+}
+
+.resultLocationText {
+  margin-top: $narrowPadding;
+  font: 12px Arial;
+}
+
+.resultInfoTruckIcon {
+  color: green;
+  font: 10px Arial;
+  padding: 4px;
+}
+
+// ItemView component
+
+.itemViewTitle {
+  padding-top: $narrowPadding;
+  font: $fontMedium Arial;
+}
+
+.itemViewPrice {
+  margin-top: $widePadding;
+  margin-bottom: $widePadding;
+  font: 46px Arial;
+}
+
+.itemViewBuyBtn {
+  background-color: $buttonColor;
+  font: $narrowPadding Arial;
+  width: 100%;
+  height: 40px;
+  color: $clearBackground;
+  border: none;
+  border-radius: 3px;
+}
+
+sup { 
+  vertical-align: top; 
+  position: relative; 
+  top: 3px; 
+  font: .5em Arial; 
+  margin-left: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// TopBar
+
+.SearchBar {
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  height: 45px;
+  max-height: 45px;
+  min-height: 45px;
+  background-color: $topBarBackground;
+}
+
+.searchBarWrppr {
+  height: 45px;
+  max-height: 45px;
+  min-height: 45px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.searchBarLogo {
+  background-image: url(../logo.png);  
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;   
+  display: block;
+  order: 1;
+  width: 55px;
+  flex-shrink: 0;
+  height: 37px;
+}
+
+.searchBarInput {
+  display: block;
+  flex-basis: 55%;
+  order: 2;
+  padding-left: 10px;
+}
+
+.searchBarSearchInput {
+  color: $topBarSearchInputColor;
+  font: $fontSmall Arial;
+  width: calc(100%);
+  outline: none;
+  border-width: 0px;
+  border: none;
+  height: 24px;
+  text-indent: 10px;
+  background-color: white;
+}
+
+.searchBarSearchBtn {
+  outline: none;
+  border-width: 0px;
+  padding-top: 5px;
+  height: 26px;
+  width: 26px;
+  min-width: 26px;
+  background-color: $clearBackground;
+  order: 3;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+// Breadcrumb
+
+.Breadcrumb {
+  max-height: 15px;
+  min-height: 15px;
+  height: 15px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: $narrowPadding;
+  padding-bottom: $narrowPadding;
+  background-color: $clearBackground;
+  color: rgb(122, 122, 122);
+  font: 14px Arial;
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.breadcrumbElement {
+  float:left;
+  height: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.breadcrumbElementArrow {
+  height: 100%;
+  float:left;
+  padding-left: 8px;
+  padding-right: 8px;
+  vertical-align: middle;
+  font-weight: 100;
+  opacity: 0.5;
+}
+
+// ItemView
+
+.ItemView {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.itemViewPicture { 
+  padding: $widePadding;
+  margin-left: 0;
+  display: flex;
+  order: 1;
+  flex-shrink: 1;
+  flex-basis: 680px;
+  height: auto;
+  img {
+    width: 100%;
+    height: auto;
+  }
+ }
+
+.itemViewDetails { 
+  padding: $widePadding;
+  order: 2;
+  flex-basis: 250px;
+  flex-shrink: 1;
+  margin-right: 0px;
+  font: 14px Arial;
+}
+
+.itemViewDesc { 
+  order: 3;
+  margin-right: auto;
+  padding-left: $widePadding;
+  padding-top: $widePadding;
+  font: 28px Arial;
+  flex-basis: calc(55%);
+  min-width: 20px;
+}
+
+.itemViewDescContentWrppr {
+  min-width: 20px;
+  padding-top: $widePadding;
+  padding-bottom: $widePadding;
+  padding-right: $widePadding;
+  font: $narrowPadding Arial;
+}

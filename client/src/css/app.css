@@ -1,0 +1,295 @@
+.MainAppWrpr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+  background-color: #EEEEEE;
+}
+
+.MainScreenWrpr {
+  background-color: #EEEEEE;
+  height: 100%;
+  width: 100%;
+}
+
+.CenterAreaWrpr {
+  top: 0;
+  height: auto;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 5%;
+  background-color: #EEEEEE;
+}
+
+.MainDataAreaWrpr {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 96%;
+  width: 100%;
+}
+
+.SearchView {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+.searchViewSeparator {
+  width: 95%;
+  max-width: 95%;
+  border-top: 1px solid #e2e2e2;
+}
+
+.Result {
+  width: 100%;
+  height: 212px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.resultWrpr {
+  display: grid;
+  grid-template-columns: 212px 40% 1fr;
+  grid-template-rows: 212px;
+  gap: 0px 0px;
+  grid-template-areas: "resultThumbnail resultInfo resultLocation";
+}
+
+.resultInfo {
+  grid-area: resultInfo;
+  overflow: hidden;
+}
+
+.resultThumbnail {
+  grid-area: resultThumbnail;
+  padding: 16px;
+  overflow: hidden;
+}
+.resultThumbnail img {
+  object-fit: cover;
+  height: 180px;
+  width: 180px;
+  border-radius: 4px;
+}
+
+.resultLocation {
+  grid-area: resultLocation;
+  padding-right: 32px;
+  padding-top: 32px;
+  text-align: right;
+}
+
+.resultInfoTitle {
+  margin-top: 32px;
+  font: 18px Arial;
+}
+
+.resultInfoPrice {
+  margin-top: 32px;
+  font: 24px Arial;
+}
+
+.resultLocationText {
+  margin-top: 16px;
+  font: 12px Arial;
+}
+
+.resultInfoTruckIcon {
+  color: green;
+  font: 10px Arial;
+  padding: 4px;
+}
+
+.itemViewTitle {
+  padding-top: 16px;
+  font: 24px Arial;
+}
+
+.itemViewPrice {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  font: 46px Arial;
+}
+
+.itemViewBuyBtn {
+  background-color: #3483FA;
+  font: 16px Arial;
+  width: 100%;
+  height: 40px;
+  color: #EEEEEE;
+  border: none;
+  border-radius: 3px;
+}
+
+sup {
+  vertical-align: top;
+  position: relative;
+  top: 3px;
+  font: 0.5em Arial;
+  margin-left: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.SearchBar {
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  height: 45px;
+  max-height: 45px;
+  min-height: 45px;
+  background-color: #FFE600;
+}
+
+.searchBarWrppr {
+  height: 45px;
+  max-height: 45px;
+  min-height: 45px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.searchBarLogo {
+  background-image: url(../logo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  order: 1;
+  width: 55px;
+  flex-shrink: 0;
+  height: 37px;
+}
+
+.searchBarInput {
+  display: block;
+  flex-basis: 55%;
+  order: 2;
+  padding-left: 10px;
+}
+
+.searchBarSearchInput {
+  color: #333333;
+  font: 18px Arial;
+  width: calc(100%);
+  outline: none;
+  border-width: 0px;
+  border: none;
+  height: 24px;
+  text-indent: 10px;
+  background-color: white;
+}
+
+.searchBarSearchBtn {
+  outline: none;
+  border-width: 0px;
+  padding-top: 5px;
+  height: 26px;
+  width: 26px;
+  min-width: 26px;
+  background-color: #EEEEEE;
+  order: 3;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.Breadcrumb {
+  max-height: 15px;
+  min-height: 15px;
+  height: 15px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: #EEEEEE;
+  color: #7a7a7a;
+  font: 14px Arial;
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.breadcrumbElement {
+  float: left;
+  height: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.breadcrumbElementArrow {
+  height: 100%;
+  float: left;
+  padding-left: 8px;
+  padding-right: 8px;
+  vertical-align: middle;
+  font-weight: 100;
+  opacity: 0.5;
+}
+
+.ItemView {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.itemViewPicture {
+  padding: 32px;
+  margin-left: 0;
+  display: flex;
+  order: 1;
+  flex-shrink: 1;
+  flex-basis: 680px;
+  height: auto;
+}
+.itemViewPicture img {
+  width: 100%;
+  height: auto;
+}
+
+.itemViewDetails {
+  padding: 32px;
+  order: 2;
+  flex-basis: 250px;
+  flex-shrink: 1;
+  margin-right: 0px;
+  font: 14px Arial;
+}
+
+.itemViewDesc {
+  order: 3;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-top: 32px;
+  font: 28px Arial;
+  flex-basis: calc(55%);
+  min-width: 20px;
+}
+
+.itemViewDescContentWrppr {
+  min-width: 20px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-right: 32px;
+  font: 16px Arial;
+}
