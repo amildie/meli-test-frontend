@@ -27,7 +27,7 @@ async function getSearchResults(searchQuery) {
 
 El cliente está diseñado con un enfoque top-down minimalista usando componentes funcionales con responsabilidades aisladas:
 
-* `<Main>` es el parent de todos los otros componentes y actúa como controlador de las tres vistas. Este componente tiene la responsabilidad de inferir el estado de la app dependiendo de los parámetros y la ruta en la URL. Por ejemplo, si la ruta es de la forma `/api/items?q=:query` entonces `<Main>` va a setear el estado interno de la app como `searchView`, y en base a ese estado va a determinar qué componentes mostrar.
+* `<Main>` es el parent de todos los otros componentes y actúa como controlador de las tres vistas. Este componente tiene la responsabilidad de inferir el estado de la app dependiendo de los parámetros y la ruta en la URL. Por ejemplo, si la ruta es de la forma `/items?search=q` entonces `<Main>` va a setear el estado interno de la app como `searchView`, y en base a ese estado va a determinar qué componentes mostrar.
 * `<SearchBar>` es la barra superior de búsqueda, se muestra en todas las vistas.
 * `<Breadcrumb>` también se muestra en todas las vistas, pero solo tiene contenido cuando el usuario está realizando un search o viendo un ítem.
 * `<SearchView>` se muestra cuando el estado de la app es `searchView`. Este componente recibe en sus `props` la query para buscar y se encarga de hacer un `fetch` al endpoint `/api/items?q=:query` del servidor. Al terminar el `fetch`, el componente crea un `<Result>` por cada ítem devuelto.
@@ -38,6 +38,8 @@ El cliente está diseñado con un enfoque top-down minimalista usando componente
 
 Como los componentes `<SearchView>` y `<ItemView>` son responsables de ir a buscar la información que necesitan, también son responsables de actualizar el `<Breadcrumb>` luego de obtenerla.
 
-Por ejemplo, si el usuario quiere entrar directamente a la vista `/items/:id`, el componente `<Main>` va a mostrar al componente `<ItemView>` directamente, sin hacer ningún search antes.
+La información de las categorías necesaria para el `<Breadcrumb>` se puede obtener con la API de Search. Esto significa que si entro a la ruta `/items?search=q`, voy a tener las categorías en la respuesta de `/api/items?q=:query`.
 
-Entonces, ¿cómo puedo completar el `<Breadcrumb>` si accedo directamente a la vista de un ítem? Esto lo solucioné pasándole una callback a `<ItemView>` que actualiza el `<Breadcrumb>` al resolverse la promesa del fetch.
+Pero si el usuario quiere entrar directamente a la ruta `/items/:id`, el componente `<Main>` va a mostrar al componente `<ItemView>` directamente, sin hacer ningún search antes, y en la respuesta de `/api/items/:id` no hay información sobre categorías (ver enunciado).
+
+Entonces, ¿cómo puedo completar el `<Breadcrumb>` si accedo directamente a `/items/:id`? Esto lo solucioné pasándole una callback a `<ItemView>` que actualiza el `<Breadcrumb>` al resolverse la promesa del fetch, y agregando a la respuesta de `/api/items/:id` un atributo `categories`.
