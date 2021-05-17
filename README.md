@@ -6,7 +6,7 @@ Para correrlo hay que ejecutar `npm i` y `npm start` en cada carpeta.
 
 ## El servidor
 
-Es un servidor de ExpressJS escucha en el puerto `3232` exponiendo los endpoints `/api/items/:id` y `/api/items?q=:query`.
+Es un servidor de ExpressJS que escucha en el puerto `3232` exponiendo los endpoints `/api/items/:id` y `/api/items?q=:query`.
 
 Al recibir una request utiliza la API de MercadoLibre para obtener la información mediante `axios`. Luego de obtenerla realiza una serie de operaciones para darle el formato correspondiente a lo que pide el enunciado.
 
