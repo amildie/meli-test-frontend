@@ -34,6 +34,22 @@ El cliente está diseñado con un enfoque top-down minimalista usando componente
   * `<Result>` es el componente que muestra el rectángulo con la información de cada resultado obtenido (thumbnail, precio, etc). Hacer click en un `<Result>` te redirecciona a `/items/:id`, donde el `id` es una `prop` del `<Result>`.
 * `<ItemView>` se muestra cuando el estado de la app es `itemView`. Este componente recibe dentro de sus `props` el `id` de un artículo y le hace un `fetch` al endpoint `/api/items/:id` del servidor. Al resolverse el `fetch` mostrará la información del ítem que fue pasado como parámetro en la ruta.
 
+### Tests del cliente
+
+Se corren con `npm test` en `/client` y hay que tener el server corriendo. Son tests de Jest que usan testing-library. Tienen mucha latencia porque están usando el mismo server que la app. Se podría usar json-server para mejorar eso.
+
+```
+ PASS  src/index.test.js
+  ✓ The Main app renders correctly (47 ms)
+  ✓ The ItemView renders correctly (804 ms)
+  ✓ The SearchView renders correctly (1490 ms)
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        5.141 s, estimated 23 s
+Ran all test suites.
+```
+
 ## Challenges
 
 Como los componentes `<SearchView>` y `<ItemView>` son responsables de ir a buscar la información que necesitan, también son responsables de actualizar el `<Breadcrumb>` luego de obtenerla.
