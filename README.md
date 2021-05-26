@@ -12,9 +12,9 @@ Por ejemplo, esta es la función interna del servidor que toma una `searchQuery`
 
 ```javascript
 async function getSearchResults(searchQuery) {
-  const responseData = { author: {name: 'Diego', lastname: 'Amil'} };
   const doSearchResponse = await doSearch(searchQuery);
   const categoryIdMaxResults = getCategoryWithMaxResults(doSearchResponse.available_filters, doSearchResponse.filters);
+  const responseData = emptySignedResponse();
   responseData.items = formatItems(doSearchResponse.results);
   responseData.categories = await getCategories(categoryIdMaxResults);
   return responseData;
