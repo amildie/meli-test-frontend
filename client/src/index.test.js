@@ -1,31 +1,31 @@
-import {
-  render, screen, fireEvent, getByLabelText,
-} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
+import { render } from '@testing-library/react';
 import { configure } from '@testing-library/dom';
 import { createMemoryHistory } from 'history';
-import React from 'react';
-import { act } from 'react-dom/test-utils';
 import { Router } from 'react-router-dom';
-import '@testing-library/jest-dom/extend-expect';
+import React from 'react';
 import Main from './components/Main';
 import ItemView from './components/ItemView';
 import SearchView from './components/SearchView';
 
-configure({ asyncUtilTimeout: 10000 });
+configure({ asyncUtilTimeout: 5000 });
 
-jest.setTimeout(10000);
-
-test('The Main app renders correctly', async () => {
+test('The Main app renders correctly and can perform searches', async () => {
   const history = createMemoryHistory();
-  const { findByLabelText, findAllByLabelText } = render(
+  history.push = jest.fn();
+
+  const { findByLabelText } = render(
     <Router history={history}>
       <Main />
     </Router>,
   );
 
-  const input = await findByLabelText('searchBarSearchForm');
-  expect(input).toBeInTheDocument();
+  const input = await findByLabelText('rtl-search-bar-form-input');
+  const searchBtn = await findByLabelText('rtl-search-bar-btn');
+  userEvent.type(input, 'monitor');
+  userEvent.click(searchBtn);
+  expect(history.push).toBeCalledWith('/items?search=monitor');
 });
 
 test('The ItemView renders correctly', async () => {
@@ -36,9 +36,9 @@ test('The ItemView renders correctly', async () => {
       setBreadcrumbCallback={setBreadCrumbCallback}
     />,
   );
-  const picture = await findByLabelText('itemViewPicture');
-  const description = await findByLabelText('itemViewDesc');
-  const details = await findByLabelText('itemViewDetails');
+  const picture = await findByLabelText('rtl-item-view-picture');
+  const description = await findByLabelText('rtl-item-view-desc');
+  const details = await findByLabelText('rtl-item-view-details');
 
   expect(picture).toBeInTheDocument();
   expect(description).toBeInTheDocument();
@@ -54,7 +54,7 @@ test('The SearchView renders correctly', async () => {
       setBreadcrumbCallback={setBreadCrumbCallback}
     />,
   );
-  const results = await findAllByLabelText('SearchResult', { timeout: 10000 });
+  const results = await findAllByLabelText('rtl-search-result', { timeout: 10000 });
   expect(results.length === 4);
   expect(setBreadCrumbCallback).toHaveBeenCalled();
 });

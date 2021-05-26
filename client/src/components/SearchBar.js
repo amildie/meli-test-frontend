@@ -14,14 +14,14 @@ function SearchBar(props) {
   };
 
   return (
-    <div className="SearchBar">
-      <div className="searchBarWrppr">
-        <div className="searchBarLogo" />
-        <div className="searchBarInput">
-          <form onSubmit={onFormSubmit} aria-label="searchBarSearchForm">
+    <div className="search-bar">
+      <div className="search-bar-wrppr">
+        <div className="search-bar-logo" />
+        <div className="search-bar-input">
+          <form onSubmit={onFormSubmit} aria-label="rtl-search-bar-form">
             <input
-              className="searchBarSearchInput"
-              aria-label="searchBarSearchInput"
+              className="search-bar-search-input"
+              aria-label="rtl-search-bar-form-input"
               value={searchQuery}
               type="text"
               placeholder="nunca dejes de buscar"
@@ -29,8 +29,8 @@ function SearchBar(props) {
             />
           </form>
         </div>
-        <button className="searchBarSearchBtn" type="submit" aria-label="searchBarSearchBtn">
-          <FontAwesomeIcon icon={faSearch} onClick={onFormSubmit} />
+        <button className="search-bar-search-btn" type="submit" aria-label="rtl-search-bar-btn" onClick={onFormSubmit}>
+          <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>
     </div>

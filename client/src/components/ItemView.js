@@ -26,31 +26,31 @@ function ItemView(props) {
   }, []);
 
   return (
-    <div className="ItemView">
+    <div className="item-view">
       {doneFetching && (
         <>
-          <div className="itemViewPicture" aria-label="itemViewPicture">
+          <div className="item-view-picture" aria-label="rtl-item-view-picture">
             <img src={itemDetails.picture} />
           </div>
-          <div className="itemViewDesc" aria-label="itemViewDesc">
+          <div className="item-view-desc" aria-label="rtl-item-view-desc">
             Descripción del producto
-            <div className="itemViewDescContentWrppr">
+            <div className="item-view-desc-content-wrppr">
               {itemDetails.description}
             </div>
           </div>
-          <div className="itemViewDetails" aria-label="itemViewDetails">
+          <div className="item-view-details" aria-label="rtl-item-view-details">
             {itemDetails.condition === 'new' ? 'Nuevo' : 'Usado' }
             {' - '}
             {itemDetails.soldQuantity}
             {' '}
             vendidos
-            <div className="itemViewTitle">
+            <div className="item-view-title">
               {itemDetails.title}
             </div>
-            <div className="itemViewPrice">
+            <div className="item-view-price">
               {formatPrice(itemDetails.price)}
             </div>
-            <button type="button" className="itemViewBuyBtn">Comprar</button>
+            <button type="button" className="item-view-buy-btn">Comprar</button>
           </div>
         </>
       )}

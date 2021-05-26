@@ -1,5 +1,13 @@
-const MAX_ITEMS_TO_DISPLAY = 4;
 const axios = require('axios');
+const {config} = require('./config.js');
+
+const emptySignedResponse = () => {
+  return {author: config.author};
+};
+
+const port = config.port;
+const itemInfoRoute = config.routes.itemInfo;
+const searchRoute = config.routes.search;
 
 function parseItemDetails(itemDetails) {
   return {
@@ -21,7 +29,7 @@ function formatItems(results) {
   let countedItems = 0;
   const items = [];
   for (const result of results) {
-    if (countedItems >= MAX_ITEMS_TO_DISPLAY) {
+    if (countedItems >= config.maxResults) {
       break;
     }
     const item = {
@@ -45,52 +53,52 @@ function getLatestPrice(prices) {
   return {
     currency: latestPrice.currency_id,
     amount: parseInt(latestPriceSplt[0]),
-    decimals: latestPriceSplt[1] ? parseInt(latestPriceSplt[1]) : 00
+    decimals: latestPriceSplt[1] ? parseInt(latestPriceSplt[1]) : 00,
   };
 }
 
 function getCategoryWithMaxResults(available_filters, filters) {
-  const categoryList = [...available_filters, ...filters].find(filter => filter.id === 'category').values;
+  const categoryList = [...available_filters, ...filters].find((filter) => filter.id === 'category').values;
   const maxResultsCategory = categoryList.reduce((prev, current) => (prev.results > current.results) ? prev : current);
   return maxResultsCategory.id;
 }
 
 async function getItemDetails(itemId) {
-  const ITEM_URL = `https://api.mercadolibre.com/items/${itemId}`;
-  return axios.get(ITEM_URL).then(itemResponse => itemResponse);
+  const requestURL = config.MeLiEndpoints.items(itemId);
+  return axios.get(requestURL).then((itemResponse) => itemResponse);
 }
 
 async function getCategories(categoryId) {
-  const CATEGORY_URL = "https://api.mercadolibre.com/categories/"+categoryId;
-  return axios.get(CATEGORY_URL).then(categoryResponse => categoryResponse.data.path_from_root.map(c => c.name));  
+  const requestURL = config.MeLiEndpoints.categories(categoryId);
+  return axios.get(requestURL).then((categoryResponse) => categoryResponse.data.path_from_root.map((c) => c.name));
 }
 
 async function getItemDescription(itemId) {
-  const ITEM_DESCRIPTION_URL = 'https://api.mercadolibre.com/items/'+itemId+'/description';
-  return axios.get(ITEM_DESCRIPTION_URL).then(descriptionResponse => descriptionResponse.data.plain_text);
-}
-
-async function getItemInfo(itemId) {
-  const responseData = { author: {name: 'Diego', lastname: 'Amil'} };
-  const itemResponse = await getItemDetails(itemId);
-  responseData.item = parseItemDetails(itemResponse.data);
-  responseData.categories = await getCategories(itemResponse.data.category_id);
-  responseData.item.description = await getItemDescription(itemId);
-  return responseData;
+  const requestURL = config.MeLiEndpoints.description(itemId);
+  return axios.get(requestURL).then((descriptionResponse) => descriptionResponse.data.plain_text);
 }
 
 async function doSearch(searchQuery) {
-  const URL = 'https://api.mercadolibre.com/sites/MLA/search?q='+searchQuery;
-  return axios.get(URL).then(response => response.data);
+  const requestURL = config.MeLiEndpoints.search(searchQuery);
+  return axios.get(requestURL).then((response) => response.data);
+}
+
+async function getItemInfo(itemId) {
+  const itemResponse = await getItemDetails(itemId);
+  const responseData = emptySignedResponse();
+  responseData.item = parseItemDetails(itemResponse.data);
+  responseData.item.description = await getItemDescription(itemId);
+  responseData.categories = await getCategories(itemResponse.data.category_id);
+  return responseData;
 }
 
 async function getSearchResults(searchQuery) {
-  const responseData = { author: {name: 'Diego', lastname: 'Amil'} };
   const doSearchResponse = await doSearch(searchQuery);
   const categoryIdMaxResults = getCategoryWithMaxResults(doSearchResponse.available_filters, doSearchResponse.filters);
+  const responseData = emptySignedResponse();
   responseData.items = formatItems(doSearchResponse.results);
   responseData.categories = await getCategories(categoryIdMaxResults);
   return responseData;
 }
 
-module.exports = {formatItems, getLatestPrice, getCategoryWithMaxResults, getCategories, getItemDescription, getItemInfo, getSearchResults};
+module.exports = {getItemInfo, getSearchResults, port, itemInfoRoute, searchRoute};

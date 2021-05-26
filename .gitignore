@@ -1,0 +1,10 @@
+
+server/node_modules/
+
+server/.vscode/
+
+client/node_modules/
+
+client/.vscode/
+
+.vscode/

@@ -1,30 +1,26 @@
-.MainAppWrpr {
+.main-app-wrpr {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   overflow-y: scroll;
-  background-color: #EEEEEE;
+  background-color: #eee;
 }
-
-.MainScreenWrpr {
-  background-color: #EEEEEE;
+.main-app-wrpr .main-screen-wrpr {
+  background-color: #eee;
   height: 100%;
   width: 100%;
 }
-
-.CenterAreaWrpr {
+.main-app-wrpr .main-screen-wrpr .center-area-wrpr {
   top: 0;
   height: auto;
   width: 60%;
   margin: 0 auto;
   padding-bottom: 5%;
-  background-color: #EEEEEE;
+  background-color: #eee;
 }
-
-.MainDataAreaWrpr {
-  top: 0;
+.main-app-wrpr .main-screen-wrpr .center-area-wrpr .main-data-area-wrpr {
   left: 0;
   bottom: 0;
   right: 0;
@@ -32,100 +28,99 @@
   width: 100%;
 }
 
-.SearchView {
+.search-view {
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   height: 100%;
   width: 100%;
-  background-color: white;
+  background-color: #fff;
 }
-
-.searchViewSeparator {
+.search-view .search-view-separator {
   width: 95%;
   max-width: 95%;
   border-top: 1px solid #e2e2e2;
 }
 
-.Result {
+.result {
   width: 100%;
   height: 212px;
-  background-color: white;
+  background-color: #fff;
   cursor: pointer;
 }
 
-.resultWrpr {
+.result-wrpr {
   display: grid;
   grid-template-columns: 212px 40% 1fr;
   grid-template-rows: 212px;
-  gap: 0px 0px;
-  grid-template-areas: "resultThumbnail resultInfo resultLocation";
+  gap: 0 0;
+  grid-template-areas: "result-thumbnail result-info result-location";
 }
 
-.resultInfo {
-  grid-area: resultInfo;
+.result-info {
+  grid-area: result-info;
   overflow: hidden;
 }
 
-.resultThumbnail {
-  grid-area: resultThumbnail;
+.result-thumbnail {
+  grid-area: result-thumbnail;
   padding: 16px;
   overflow: hidden;
 }
-.resultThumbnail img {
+.result-thumbnail img {
   object-fit: cover;
   height: 180px;
   width: 180px;
   border-radius: 4px;
 }
 
-.resultLocation {
-  grid-area: resultLocation;
+.result-location {
+  grid-area: result-location;
   padding-right: 32px;
   padding-top: 32px;
   text-align: right;
 }
 
-.resultInfoTitle {
+.result-info-title {
   margin-top: 32px;
   font: 18px Arial;
 }
 
-.resultInfoPrice {
+.result-info-price {
   margin-top: 32px;
   font: 24px Arial;
 }
 
-.resultLocationText {
+.result-location-text {
   margin-top: 16px;
   font: 12px Arial;
 }
 
-.resultInfoTruckIcon {
-  color: green;
+.result-info-truck-icon {
+  color: #008000;
   font: 10px Arial;
   padding: 4px;
 }
 
-.itemViewTitle {
+.item-view-title {
   padding-top: 16px;
   font: 24px Arial;
 }
 
-.itemViewPrice {
+.item-view-price {
   margin-top: 32px;
   margin-bottom: 32px;
   font: 46px Arial;
 }
 
-.itemViewBuyBtn {
-  background-color: #3483FA;
+.item-view-buy-btn {
+  background-color: #3483fa;
   font: 16px Arial;
   width: 100%;
   height: 40px;
-  color: #EEEEEE;
-  border: none;
+  color: #eee;
+  border: 0;
   border-radius: 3px;
 }
 
@@ -142,7 +137,7 @@ a {
   text-decoration: none;
 }
 
-.SearchBar {
+.search-bar {
   top: 0;
   left: 0;
   right: 0;
@@ -150,10 +145,10 @@ a {
   height: 45px;
   max-height: 45px;
   min-height: 45px;
-  background-color: #FFE600;
+  background-color: #ffe600;
 }
 
-.searchBarWrppr {
+.search-bar-wrppr {
   height: 45px;
   max-height: 45px;
   min-height: 45px;
@@ -165,8 +160,8 @@ a {
   align-content: center;
 }
 
-.searchBarLogo {
-  background-image: url(../logo.png);
+.search-bar-logo {
+  background-image: url("../logo.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -177,39 +172,39 @@ a {
   height: 37px;
 }
 
-.searchBarInput {
+.search-bar-input {
   display: block;
   flex-basis: 55%;
   order: 2;
   padding-left: 10px;
 }
 
-.searchBarSearchInput {
-  color: #333333;
+.search-bar-search-input {
+  color: #333;
   font: 18px Arial;
   width: calc(100%);
   outline: none;
-  border-width: 0px;
-  border: none;
+  border-width: 0;
+  border: 0;
   height: 24px;
   text-indent: 10px;
-  background-color: white;
+  background-color: #fff;
 }
 
-.searchBarSearchBtn {
+.search-bar-search-btn {
   outline: none;
-  border-width: 0px;
+  border-width: 0;
   padding-top: 5px;
   height: 26px;
   width: 26px;
   min-width: 26px;
-  background-color: #EEEEEE;
+  background-color: #eee;
   order: 3;
   flex-shrink: 0;
   cursor: pointer;
 }
 
-.Breadcrumb {
+.breadcrumb {
   max-height: 15px;
   min-height: 15px;
   height: 15px;
@@ -217,7 +212,7 @@ a {
   margin: 0 auto;
   padding-top: 16px;
   padding-bottom: 16px;
-  background-color: #EEEEEE;
+  background-color: #eee;
   color: #7a7a7a;
   font: 14px Arial;
   font-weight: 100;
@@ -227,14 +222,14 @@ a {
   overflow: hidden;
 }
 
-.breadcrumbElement {
+.breadcrumb-element {
   float: left;
   height: 100%;
   vertical-align: middle;
   overflow: hidden;
 }
 
-.breadcrumbElementArrow {
+.breadcrumb-element-arrow {
   height: 100%;
   float: left;
   padding-left: 8px;
@@ -244,8 +239,8 @@ a {
   opacity: 0.5;
 }
 
-.ItemView {
-  background-color: white;
+.item-view {
+  background-color: #fff;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -253,7 +248,7 @@ a {
   justify-content: space-between;
 }
 
-.itemViewPicture {
+.item-view-picture {
   padding: 32px;
   margin-left: 0;
   display: flex;
@@ -262,21 +257,21 @@ a {
   flex-basis: 680px;
   height: auto;
 }
-.itemViewPicture img {
+.item-view-picture img {
   width: 100%;
   height: auto;
 }
 
-.itemViewDetails {
+.item-view-details {
   padding: 32px;
   order: 2;
   flex-basis: 250px;
   flex-shrink: 1;
-  margin-right: 0px;
+  margin-right: 0;
   font: 14px Arial;
 }
 
-.itemViewDesc {
+.item-view-desc {
   order: 3;
   margin-right: auto;
   padding-left: 32px;
@@ -286,7 +281,7 @@ a {
   min-width: 20px;
 }
 
-.itemViewDescContentWrppr {
+.item-view-desc-content-wrppr {
   min-width: 20px;
   padding-top: 32px;
   padding-bottom: 32px;

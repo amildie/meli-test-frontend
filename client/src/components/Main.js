@@ -11,8 +11,8 @@ function Main() {
   const { id, fromSearch } = useParams();
   const searchQuery = queryString.parse(useLocation().search).search;
   const appState = {
-    itemView: (id),
-    searchView: (searchQuery),
+    itemView: (typeof id !== 'undefined'),
+    searchView: (typeof searchQuery !== 'undefined'),
     initialView: (!id && !searchQuery),
   };
 
@@ -22,12 +22,14 @@ function Main() {
   };
 
   return (
-    <div className="MainAppWrpr">
-      <div className="MainScreenWrpr">
+    <div className="main-app-wrpr">
+      <div className="main-screen-wrpr">
         <SearchBar searchQuery={searchQuery || fromSearch || ''} />
-        <div className="CenterAreaWrpr">
-          <Breadcrumb content={breadcrumbContent} />
-          <div className="MainDataAreaWrpr">
+        <div className="center-area-wrpr">
+          {!appState.initialView && (
+            <Breadcrumb content={breadcrumbContent} />
+          )}
+          <div className="main-data-area-wrpr">
             {appState.initialView && (
               <div />
             )}

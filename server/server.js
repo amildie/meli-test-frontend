@@ -1,7 +1,7 @@
 const express = require('express');
-const utils = require('./utils');
+const api = require('./api/api');
 const cors = require('cors');
-const port = 3232;
+const port = api.port;
 const app = express();
 
 app.use(cors());
@@ -10,24 +10,24 @@ app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
 });
 
-app.get('/api/items/:id', (req, res) => {
+app.get(api.itemInfoRoute, (req, res) => {
   const itemId = req.params.id;
   if (!itemId) {
-    res.status(400).send("Bad request");
+    res.status(400).send('Bad request');
   }
 
-  utils.getItemInfo(itemId).then(responseData => {
+  api.getItemInfo(itemId).then((responseData) => {
     res.status(200).send(responseData);
   });
 });
 
-app.get('/api/items', (req, res) => {
+app.get(api.searchRoute, (req, res) => {
   const searchQuery = req.query.q;
   if (!searchQuery) {
-    res.status(400).send("Bad request");
+    res.status(400).send('Bad request');
   }
-  
-  utils.getSearchResults(searchQuery).then(searchResults => {
+
+  api.getSearchResults(searchQuery).then((searchResults) => {
     res.status(200).send(searchResults);
   });
 });

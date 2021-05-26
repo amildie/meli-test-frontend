@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Result from './Result';
 
 function SearchView(props) {
@@ -32,12 +31,12 @@ function SearchView(props) {
 
   function separator() {
     return (
-      <hr className="solid searchViewSeparator" />
+      <hr className="solid search-view-separator" />
     );
   }
 
   return (
-    <div className="SearchView">
+    <div className="search-view">
       {searchResults}
     </div>
   );
