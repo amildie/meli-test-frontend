@@ -25,12 +25,12 @@ async function getSearchResults(searchQuery) {
 
 El cliente está diseñado con un enfoque top-down minimalista usando componentes funcionales con responsabilidades aisladas:
 
-* `<Main>` es el parent de todos los otros componentes y actúa como controlador de las tres vistas. Este componente tiene la responsabilidad de inferir el estado de la app dependiendo de los parámetros y la ruta en la URL. Por ejemplo, si la ruta es de la forma `/items?search=q` entonces `<Main>` va a setear el estado interno de la app como `searchView`, y en base a ese estado va a determinar qué componentes mostrar.
-* `<SearchBar>` es la barra superior de búsqueda, se muestra en todas las vistas.
-* `<Breadcrumb>` también se muestra en todas las vistas, pero solo tiene contenido cuando el usuario está realizando un search o viendo un ítem.
-* `<SearchView>` se muestra cuando el estado de la app es `searchView`. Este componente recibe en sus `props` la query para buscar y se encarga de hacer un `fetch` al endpoint `/api/items?q=:query` del servidor. Al terminar el `fetch`, el componente crea un `<Result>` por cada ítem devuelto.
-  * `<Result>` es el componente que muestra el rectángulo con la información de cada resultado obtenido (thumbnail, precio, etc). Hacer click en un `<Result>` te redirecciona a `/items/:id`, donde el `id` es una `prop` del `<Result>`.
-* `<ItemView>` se muestra cuando el estado de la app es `itemView`. Este componente recibe dentro de sus `props` el `id` de un artículo y le hace un `fetch` al endpoint `/api/items/:id` del servidor. Al resolverse el `fetch` mostrará la información del ítem que fue pasado como parámetro en la ruta.
+* [`<Main>`](https://github.com/amildie/meli-test-frontend/blob/master/client/src/components/Main.js) es el parent de todos los otros componentes y actúa como controlador de las tres vistas. Este componente tiene la responsabilidad de inferir el estado de la app dependiendo de los parámetros y la ruta en la URL. Por ejemplo, si la ruta es de la forma `/items?search=q` entonces `<Main>` va a setear el estado interno de la app como `searchView`, y en base a ese estado va a determinar qué componentes mostrar.
+* [`<SearchBar>`](https://github.com/amildie/meli-test-frontend/blob/master/client/src/components/SearchBar.js) es la barra superior de búsqueda, se muestra en todas las vistas.
+* [`<Breadcrumb>`](https://github.com/amildie/meli-test-frontend/blob/master/client/src/components/Breadcrumb.js) también se muestra en todas las vistas, pero solo tiene contenido cuando el usuario está realizando un search o viendo un ítem.
+* [`<SearchView>`](https://github.com/amildie/meli-test-frontend/blob/master/client/src/components/SearchView.js) se muestra cuando el estado de la app es `searchView`. Este componente recibe en sus `props` la query para buscar y se encarga de hacer un `fetch` al endpoint `/api/items?q=:query` del servidor. Al terminar el `fetch`, el componente crea un `<Result>` por cada ítem devuelto.
+  * [`<Result>`](https://github.com/amildie/meli-test-frontend/blob/master/client/src/components/Result.js) es el componente que muestra el rectángulo con la información de cada resultado obtenido (thumbnail, precio, etc). Hacer click en un `<Result>` te redirecciona a `/items/:id`, donde el `id` es una `prop` del `<Result>`.
+* [`<ItemView>`](https://github.com/amildie/meli-test-frontend/blob/master/client/src/components/ItemView.js) se muestra cuando el estado de la app es `itemView`. Este componente recibe dentro de sus `props` el `id` de un artículo y le hace un `fetch` al endpoint `/api/items/:id` del servidor. Al resolverse el `fetch` mostrará la información del ítem que fue pasado como parámetro en la ruta.
 
 ### Challenges
 
